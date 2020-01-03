@@ -1,11 +1,13 @@
 package app.controllers;
 
+import app.dto.ReservationRequest;
 import app.entities.Flight;
 import app.repos.FlightRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Optional;
@@ -23,5 +25,14 @@ public class ReservationController {
         modelMap.addAttribute("flight", flight);
         return "completeReservation";
     }
+
+    @RequestMapping(value = "/completeReservation", method = RequestMethod.POST)
+    public String completeReservation(ReservationRequest request) {
+
+
+
+        return null;
+    }
+
 
 }
