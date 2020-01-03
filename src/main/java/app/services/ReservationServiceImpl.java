@@ -8,9 +8,11 @@ import app.repos.FlightRepository;
 import app.repos.PassengerRepository;
 import app.repos.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Service
 public class ReservationServiceImpl implements ReservationService {
 
     @Autowired
