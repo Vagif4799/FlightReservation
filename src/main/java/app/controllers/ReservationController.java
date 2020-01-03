@@ -2,7 +2,9 @@ package app.controllers;
 
 import app.dto.ReservationRequest;
 import app.entities.Flight;
+import app.entities.Reservation;
 import app.repos.FlightRepository;
+import app.services.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -18,6 +20,9 @@ public class ReservationController {
     @Autowired
     FlightRepository flightRepository;
 
+    @Autowired
+    ReservationService reservationService;
+
     @RequestMapping("/showCompleteReservation")
     public String showCompleteReservation(@RequestParam("flightId") Long flightId, ModelMap modelMap) {
         Optional<Flight> flightOptional = flightRepository.findById(flightId);
@@ -27,11 +32,12 @@ public class ReservationController {
     }
 
     @RequestMapping(value = "/completeReservation", method = RequestMethod.POST)
-    public String completeReservation(ReservationRequest request) {
+    public String completeReservation(ReservationRequest request, ModelMap modelMap) {
 
+        Reservation reservation = reservationService.bookFlight(request);
+        modelMap.addAttribute("msg", "Reservation created successfully and the id is " + reservation.getId());
 
-
-        return null;
+        return "reservationConfirmation";
     }
 
 

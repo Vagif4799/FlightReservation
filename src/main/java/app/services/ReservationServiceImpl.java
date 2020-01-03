@@ -25,7 +25,8 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     public Reservation bookFlight(ReservationRequest request) {
 
-        // Make Payment, Then the next steps
+        // Make Payment, Then the next steps.
+        // For now, it is completely for free ;)
 
         Long flightId = request.getFlightId();
         Optional<Flight> flightOptional = flightRepository.findById(flightId);
