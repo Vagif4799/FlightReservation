@@ -4,13 +4,12 @@ import app.dto.ReservationUpdateRequest;
 import app.entities.Reservation;
 import app.repos.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
 @RestController
+@CrossOrigin
 public class ReservationRestController {
 
     @Autowired
@@ -24,7 +23,7 @@ public class ReservationRestController {
 
 
     @RequestMapping("/reservations")
-    public Reservation updateReservation(ReservationUpdateRequest request){
+    public Reservation updateReservation(@RequestBody ReservationUpdateRequest request){
         Reservation reservation = reservationRepository.findById(request.getId()).get();
         reservation.setNumberOfBags(request.getNumberOfBags());
         reservation.setCheckedIn(request.getCheckedIn());
